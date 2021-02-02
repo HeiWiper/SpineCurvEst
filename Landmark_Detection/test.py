@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     ### prediction..
     
-    image_path = 'try.jpg'
+    image_path = 'try3.jpg'
     im = Image.open(image_path)
     im = np.array(im)
     im = np.delete(im, [1, 2], axis=2)
@@ -23,8 +23,8 @@ if __name__ == "__main__":
     print(im.shape)
     model = DenseNet(dense_blocks=5, dense_layers=-1, growth_rate=8, dropout_rate=0.2,
                      bottleneck=True, compression=1.0, weight_decay=1e-4, depth=40)
-    model.load_weights("outputs/model-230.h5")
-    
+    #model.load_weights("outputs/model-230.h5")
+    model.load_weights("test")
     
    
     lmarks = model.predict(im)

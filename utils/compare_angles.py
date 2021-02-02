@@ -82,7 +82,7 @@ def plot_angles(csv_path_gnd, csv_path_est):
 
 
 
-csv_path_gnd= "C:/Users/Brinda Khanal/Downloads/scoliosis xray Single View/boostnet_labeldata/labels/training/angles.csv"
-csv_path_est = "C:/Users/Brinda Khanal/Documents/Bidur Git Repo/Spine_Challenge/angles_ap.csv"
+csv_path_gnd= "test_cobb_angles.csv"
+csv_path_est = "cobb_angles_predicted.csv"
 
 plot_angles (csv_path_gnd,csv_path_est)

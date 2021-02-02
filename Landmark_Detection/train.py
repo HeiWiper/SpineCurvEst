@@ -21,11 +21,10 @@ if __name__ == "__main__":
     r=120
     c=200
     reduceLearningRate  = 0.5
-
-    df_train_path = 'train_patches_gnd.csv'
-    df_val_path ='val_patches_gnd.csv'
-    train_image_path = 'train_patch_images/'
-    val_image_path ='val_patch_images/'
+    df_train_path = "../Jupyter_Notebooks/training_patches_gnd.csv"
+    df_val_path ="../Jupyter_Notebooks/test_patches_gnd.csv"
+    train_image_path = "../Jupyter_Notebooks/training_patch_images/"
+    val_image_path ="../Jupyter_Notebooks/test_patch_images/"
 
     df_train = pd.read_csv(df_train_path)
     df_val = pd.read_csv (df_val_path)
@@ -63,29 +62,30 @@ if __name__ == "__main__":
     adamOpt = Adam(lr=0.0001)
     model.compile(loss='mean_squared_error', optimizer=adamOpt, metrics=['mae', 'mse'])
     model.summary(line_length=200)
+    model.save("test")
 
-
-    log_filename = 'outputs/' + 'landmarks' +'_results.csv'
-
-    csv_log = callbacks.CSVLogger(log_filename, separator=',', append=True)
-
-    
-
-    checkpoint = callbacks.ModelCheckpoint(checkpoint_filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
-    
-    callbacks_list = [csv_log, checkpoint]
-    callbacks_list.append(ReduceLROnPlateau(factor=reduceLearningRate, patience=200,
-                                               verbose=True))
-    callbacks_list.append(EarlyStopping(verbose=True, patience=200))
-    
-    callbacks_list.append(TensorBoard(log_dir='outputs/logs'))
-    
-    
-        
-
-    history = model.fit_generator(train_gen,
-                        steps_per_epoch=len(train_idx)//batch_size,
-                        epochs=1000,
-                        callbacks=callbacks_list,
-                        validation_data=valid_gen,
-                        validation_steps=len(val_idx)//valid_batch_size)
+#    log_filename = 'outputs/' + 'landmarks' +'_results.csv'
+#
+#    csv_log = callbacks.CSVLogger(log_filename, separator=',', append=True)
+#
+#    
+#
+#    checkpoint = callbacks.ModelCheckpoint(checkpoint_filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
+#    
+#    callbacks_list = [csv_log, checkpoint]
+#    callbacks_list.append(ReduceLROnPlateau(factor=reduceLearningRate, patience=200,
+#                                               verbose=True))
+#    callbacks_list.append(EarlyStopping(verbose=True, patience=200))
+#    
+#    callbacks_list.append(TensorBoard(log_dir='outputs/logs'))
+#    
+#    
+#        
+#
+#    history = model.fit_generator(train_gen,
+#                        steps_per_epoch=len(train_idx)//batch_size,
+#                        epochs=1,
+#                        callbacks=callbacks_list,
+#                        validation_data=valid_gen,
+#                        validation_steps=len(val_idx)//valid_batch_size,
+#                        verbose=2)

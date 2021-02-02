@@ -10,8 +10,8 @@ def smape(y_true, y_pred):
 
 
 
-true_csv_path = "C:/Users/Brinda Khanal/Documents/Bidur Git Repo/Spine_Challenge/Cobb angle Calculation/angles.csv"
-pred_csv_path = "C:/Users/Brinda Khanal/Documents/Bidur Git Repo/Spine_Challenge/Cobb angle Calculation/angles_ap.csv"
+true_csv_path = "../boostnet_labeldata/labels/test/angles.csv"
+pred_csv_path = "angles_predicted.csv"
 true_angles = pd.read_csv(true_csv_path, header=None).values
 pred_angles = pd.read_csv(pred_csv_path, header=None).values
 print (smape(true_angles, pred_angles))

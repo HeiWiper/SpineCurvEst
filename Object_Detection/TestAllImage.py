@@ -11,7 +11,6 @@ from luminoth import Detector
    We use the saved checkpoints to test the the model with given test data.
    We perfrom some post-processing to reject the outliers
    Marks the vertebra location in all the test images and saves them 
-
 '''
 
 
@@ -110,14 +109,11 @@ def predict_vertebra(image, detection):
     
 
 if __name__ == "__main__":
-    checkpoint = "d40a34821081"
+    #checkpoint = "d40a34821081"
+    checkpoint = "e1c2565b51e9"
     detection = Detector(checkpoint)
-    image_path = "data/cropped test/"
+    image_path = "../Jupyter_Notebooks/test cropped/crop/"
     output_path = "pred crop1/"
     #image = read_image(image_path + '01-July-2019-50.jpg')
     #pred_image= predict_vertebra (image,detection)
     save_image(image_path, detection, output_path)
-    
-  
-     
- 
